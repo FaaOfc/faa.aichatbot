@@ -9,55 +9,39 @@
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
        
         body {
-    font-family: 'Inter', sans-serif;
-    background-color: #0f0f0f; /* Warna latar belakang utama */
-    color: #0f0f0f; /* Warna teks utama */
-    overscroll-behavior: none;
-    margin: 0;
-    padding: 0;
-}
-
-.chat-bubble-user {
-    background-color: #262626; /* Bubble dari user */
-    color: #f9fafb;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-    border-radius: 0.75rem;
-    padding: 0.85rem 1.15rem;
-    max-width: 85%;
-    word-wrap: break-word;
-    margin: 0.5rem 1rem 0.5rem auto;
-    animation: appear 0.3s ease-out forwards;
-}
-
-.chat-bubble-ai {
-    background-color: #1c1c1c; /* Bubble dari AI */
-    color: #f1f1f1;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.15);
-    border-radius: 0.75rem;
-    padding: 0.85rem 1.15rem;
-    max-width: 85%;
-    word-wrap: break-word;
-    margin: 0.5rem auto 0.5rem 1rem;
-    animation: appear 0.3s ease-out forwards;
-    position: relative;
-}
-
-.chat-bubble-ai.error-message {
-    background-color: #4b5563;
-    border: 1px solid #9ca3af;
-    color: #fefefe;
-}
-
-@keyframes appear {
-    from {
-        opacity: 0;
-        transform: translateY(10px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
+            font-family: 'Inter', sans-serif;
+            background-color: #f9fafb;
+            color: #1f2937;
+            overscroll-behavior: none;
+        }
+        .chat-bubble-user {
+            background-color: #262626;
+            color: #f9fafb;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .chat-bubble-ai {
+            background-color: #e5e7eb;
+            color: #1f2937;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            position: relative;
+        }
+        .chat-bubble-ai.error-message {
+            background-color: #d1d5db;
+            border: 1px solid #9ca3af;
+        }
+        .chat-bubble {
+            padding: 0.85rem 1.15rem;
+            border-radius: 0.75rem;
+            max-width: 85%;
+            word-wrap: break-word;
+            opacity: 0;
+            transform: translateY(10px);
+            animation: appear 0.3s ease-out forwards;
+        }
+        @keyframes appear {
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
         .chat-message-image, .ai-generated-image {
             max-width: 250px;
             max-height: 250px;
