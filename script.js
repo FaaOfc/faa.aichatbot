@@ -1,9 +1,8 @@
 const categoryDescriptions = {
 "Blue Archive": "Karakter Dari Blue Archive",
 "Gotoubun No Hanayome": "Karakter Dari Anime Gotoubun No Hanayome",
-"Topup": "Topup Game",
-"Instagram": "Suntik Instagram",
-"Tik Tok": "Suntik Tik Tok",
+"Genshin Impact": "Karakter Dari Game Genshin Impact",
+"base": "Place Holder",
 };
 
 
@@ -174,31 +173,6 @@ dir: "base" ,
 subname: "base", image: "image/base.jpg",
 desc: "char\n- Anime -",
 }
-],
-
-"Instagram": [
-{
-name: "Instagram",
-subname: "Views",
-code: "ig-vi",
-price: 50, image: "20250325_070407.jpg",
-desc: "Rp. 50/1k Views\nMinimum Order Rp. 1.000",
-},
-{
-name: "Instagram",
-subname: "Likes",
-code: "ig-li",
-price: 1000, image: "20250325_070407.jpg",
-desc: "Rp. 1.000/1k Likes",
-},
-{
-name: "Instagram",
-subname: "Followers",
-code: "ig-fo",
-price: 14000, image: "20250325_070407.jpg",
-desc: "Rp. 14.000/1k Followers" }
-],
-
 ]
 };
 
