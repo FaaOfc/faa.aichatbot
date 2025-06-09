@@ -201,7 +201,7 @@ categories[category].forEach((p, i) => {
       </div>
       <div class="desc" id="desc-${category}-${i}">${formattedDesc}</div>  
       <div class="btn-group">  
-        <a class="btn" href="https://faa-aichatbot.netlify.app/${p.dir}/${p.subname}">Mulai Chat</a>
+        <a class="btn" href="https://aichatbot.faanrky.my.id/${p.dir}/${p.subname}">Mulai Chat</a>
         <button class="btn" onclick="toggleDesc('${category}', ${i})">Lihat Deskripsi</button>  
       </div>  
     </div>  
