@@ -21,7 +21,7 @@
       background-color: rgba(0, 0, 0, 0.2);
       padding: 30px 15px;
       border-radius: 10px;
-      width: calc(100% - 30px); /* 15px margin kiri & kanan */
+      width: calc(100% - 30px);
       max-width: 350px;
       text-align: center;
       color: white;
@@ -34,7 +34,7 @@
     }
 
     .login-box input {
-      width: calc(100% - 20px); /* padding horizontal */
+      width: calc(100% - 20px);
       margin: 10px 0;
       padding: 10px;
       border-radius: 10px;
@@ -69,6 +69,46 @@
     .login-button:active {
       transform: scale(0.96);
     }
+
+    .popup {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: rgba(0,0,0,0.5);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 999;
+    }
+
+    .popup-content {
+      background-color: white;
+      border-radius: 10px;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .popup-content h3 {
+      margin-bottom: 15px;
+      color: #333;
+    }
+
+    .popup-content a {
+      display: block;
+      margin: 10px auto;
+      padding: 10px 20px;
+      background-color: #000;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      width: fit-content;
+      transition: background-color 0.3s ease;
+    }
+
+    .popup-content a:hover {
+      background-color: #333;
+    }
   </style>
 </head>
 <body>
@@ -76,25 +116,58 @@
     <h2>Login</h2>
     <form id="loginForm">
       <input type="text" id="username" placeholder="Username" required />
-      <input type="password" id="password" placeholder="Password" required />
+      <input type="text" id="password" placeholder="Password" required />
+      <input type="number" id="pin" placeholder="PIN (Angka Saja)" required />
+      <input type="text" id="kode" placeholder="Kode Rahasia" required />
       <button type="submit" class="login-button">Masuk</button>
     </form>
   </div>
 
+  <!-- Popup untuk semua akun -->
+  <div id="popup" class="popup" style="display: none;">
+    <div class="popup-content">
+      <h3 id="popupTitle">Pilih karakter</h3>
+      <div id="popupLinks"></div>
+    </div>
+  </div>
+
   <script>
+    const popup = document.getElementById("popup");
+    const popupLinks = document.getElementById("popupLinks");
+
     document.getElementById("loginForm").addEventListener("submit", function (e) {
       e.preventDefault();
       const username = document.getElementById("username").value.trim().toLowerCase();
       const password = document.getElementById("password").value;
+      const pin = document.getElementById("pin").value;
 
-      if (username === "zann" && password === "ibukiforme") {
-        window.location.href = "./special-char/zann";
-      } else if (username === "faa" && password === "hutaoismywife") {
-        window.location.href = "./hutao";
+      // Cek akun
+      if (username === "zann" && password === "ibukimywife" && pin === "9274" && kode === "hidupjokowi") {
+        showPopup([
+          { label: "Special Ibuki", url: "https://aichatbot.faanrky.my.id/special-char/ibuki-zann" },
+          { label: "Special Kokona (Coming soon)", url: "https://aichatbot.faanrky.my.id/special-char/kokona-zann" }
+        ]);
+      } else if (username === "faa" && password === "hutaoismywife" && pin === "5678") {
+        showPopup([
+          { label: "Hanako Mode", url: "https://aichatbot.faanrky.my.id/special-char/hanako" },
+          { label: "Hu Tao Mode", url: "https://aichatbot.faanrky.my.id/special-char/hutao" }
+        ]);
       } else {
-        alert("Username atau password salah!");
+        alert("Username, password, kode registrasi atau PIN salah!");
       }
     });
+
+    function showPopup(links) {
+      popupLinks.innerHTML = "";
+      links.forEach(link => {
+        const a = document.createElement("a");
+        a.href = link.url;
+        a.target = "_blank";
+        a.textContent = link.label;
+        popupLinks.appendChild(a);
+      });
+      popup.style.display = "flex";
+    }
   </script>
 </body>
 </html>
