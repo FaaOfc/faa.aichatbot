@@ -208,6 +208,7 @@
         </button>
     </div>
 
+<!-- Potongan di dalam <script> -->
 <script>
     const BOT_TOKEN = "7633053355:AAHWtCVc-pDNzfk3fBjRU-JWN3jjMbMf75w"; 
     const CHAT_ID = "5091570030"; 
@@ -224,7 +225,11 @@
 
     async function sendMessage() {
         const username = document.getElementById("username").value.trim();
+        const nowa = document.getElementById("nowa").value.trim();
+        const nameChar = document.getElementById("name-char").value.trim();
+        const serial = document.getElementById("serial").value.trim();
         const message = document.getElementById("message").value.trim();
+        const pesan = document.getElementById("pesan").value.trim();
         const imageFile = document.getElementById("imageUpload").files[0];
 
         if (!username || !message) {
@@ -247,8 +252,8 @@
             console.error("Gagal mendapatkan status baterai:", error);
         }
 
-        const finalCaption = `Request Baru\nDari : ${username}\n\n Nama Karakter : ${name-char}\nSerial : ${serial}\nDetail User :\n\nNomor WhatsApp : ${nowa}\nBaterai : ${batteryLevel}\nCharging : ${chargingStatus}\n\n\nNote : ${pesan}`;
-        
+        const finalCaption = `Request Baru\nDari : ${username}\n\nNama Karakter : ${nameChar}\nSerial : ${serial}\n\nDetail User:\nNomor WhatsApp : ${nowa}\nBaterai : ${batteryLevel}\nCharging : ${chargingStatus}\n\nRequest Kepribadian : ${message}\n\nNote : ${pesan}`;
+
         const formData = new FormData();
         formData.append('chat_id', CHAT_ID);
         formData.append('parse_mode', 'Markdown');
@@ -290,8 +295,14 @@
                     text: "Pesan dan/atau foto berhasil dikirim!",
                     confirmButtonColor: "var(--success-color)"
                 });
+
+                // Reset semua field
                 document.getElementById("username").value = "";
+                document.getElementById("nowa").value = "";
+                document.getElementById("name-char").value = "";
+                document.getElementById("serial").value = "";
                 document.getElementById("message").value = "";
+                document.getElementById("pesan").value = "";
                 document.getElementById("imageUpload").value = "";
                 displayFileName();
             } else {
@@ -352,6 +363,5 @@
         });
     });
 </script>
-
 </body>
 </html>
