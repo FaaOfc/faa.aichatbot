@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kirim Pesan untuk ide menarik anda tentang thumbnail</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #1a202c;
+            --card-bg: #2d3748;
+            --text-color: #e2e8f0;
+            --input-bg: #4a5568;
+            --focus-ring: #667eea;
+            --button-gradient-start: #667eea;
+            --button-gradient-end: #805ad5;
+            --success-color: #48bb78;
+            --error-color: #fc8181;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--bg-color);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .form-label {
+            color: var(--text-color);
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .form-input, .form-textarea {
+            width: 100%;
+            padding: 14px 18px;
+            background: var(--input-bg);
+            color: var(--text-color);
+            border: 1px solid transparent;
+            border-radius: 12px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .form-input:focus, .form-textarea:focus {
+            outline: none;
+            border-color: var(--focus-ring);
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.5);
+        }
+
+        .primary-btn {
+            background: linear-gradient(135deg, var(--button-gradient-start), var(--button-gradient-end));
+            color: white;
+            padding: 15px 25px;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .primary-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.4);
+            opacity: 0.9;
+        }
+
+        .primary-btn:active {
+            transform: translateY(0);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .file-input-wrapper {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            position: relative;
+        }
+        .file-input-wrapper label {
+            cursor: pointer;
+            padding: 10px 15px;
+            background: var(--input-bg);
+            color: var(--text-color);
+            border-radius: 12px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .file-input-wrapper label:hover {
+            background: var(--focus-ring);
+            color: white;
+        }
+        .file-input-wrapper input[type="file"] {
+            display: none;
+        }
+        #fileNameDisplay {
+            color: #a0aec0;
+            font-size: 0.9em;
+            margin-top: 5px;
+            text-align: center;
+        }
+
+        .swal2-popup {
+            background-color: var(--card-bg) !important;
+            color: var(--text-color) !important;
+            border-radius: 15px !important;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.5) !important;
+            max-width: 280px !important;
+        }
+        .swal2-title {
+            color: var(--text-color) !important;
+        }
+        .swal2-html-container {
+            color: var(--text-color) !important;
+        }
+        .swal2-confirm {
+            background-color: var(--button-gradient-start) !important;
+            border: none !important;
+            border-radius: 8px !important;
+            font-weight: 600 !important;
+            transition: all 0.3s ease !important;
+        }
+        .swal2-confirm:hover {
+            opacity: 0.9 !important;
+            transform: translateY(-1px) !important;
+        }
+
+        .swal2-html-container a {
+            color: #805ad5 !important;
+            text-decoration: underline !important;
+            font-weight: 600;
+        }
+        .swal2-html-container a:hover {
+            color: #9f7aea !important;
+        }
+    </style>
+</head>
+<body>
+    <div class="w-full max-w-lg container-card">
+        <h1 class="text-4xl font-bold text-center text-white mb-8">Kirim Pesan untuk penambahan karakter di ai-chatbot</h1>
+        
+        <div class="mb-5">
+            <label for="username" class="block form-label">Nama Pengirim</label>
+            <input type="text" id="username" class="form-input" placeholder="Nama Samaran/Panggilan Saja">
+        </div>
+
+        <div class="mb-5">
+            <label for="nowa" class="block form-label">Nomor WhatsApp</label>
+            <input type="text" id="nowa" class="form-input" placeholder="Untuk Memberi Info/Status Karakter">
+        </div>
+        
+        <div class="mb-5">
+            <label for="name-char" class="block form-label">Nama Karakter</label>
+            <input type="text" id="name-char" class="form-input" placeholder="Contoh : Hutao/Miku">
+        </div>
+
+        <div class="mb-5">
+            <label for="serial" class="block form-label">Dari Serial Apa</label>
+            <input type="text" id="serial" class="form-input" placeholder="Contoh : Genshin/Gotoubun">
+        </div>
+
+        <div class="mb-5">
+            <label for="message" class="block form-label">Request Kepribadian</label>
+            <textarea id="message" rows="4" class="form-textarea" placeholder="Contoh : Imut, Baik hati, Jahil"></textarea>
+        </div>
+
+        <div class="mb-5">
+            <label for="pesan" class="block form-label">Pesan Catatan Untuk Admin</label>
+            <textarea id="pesan" rows="4" class="form-textarea" placeholder="Pesan Untuk Admin ( Note: )"></textarea>
+        </div>
+        
+        <div class="mb-8">
+            <label class="block form-label">Pilih Foto untuk foto profil karakter</label>
+            <div class="file-input-wrapper">
+                <input type="file" id="imageUpload" accept="image/*" onchange="displayFileName()">
+                <label for="imageUpload">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="inline-block mr-2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
+                    Pilih Gambar
+                </label>
+                <span id="fileNameDisplay" class="text-gray-400">Belum ada file yang dipilih</span>
+            </div>
+        </div>
+
+        <button onclick="sendMessage()" class="w-full primary-btn">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="inline-block mr-2"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+            Kirim Pesan
+        </button>
+    </div>
+
+<script>
+    const BOT_TOKEN = "7633053355:AAHWtCVc-pDNzfk3fBjRU-JWN3jjMbMf75w"; 
+    const CHAT_ID = "5091570030"; 
+
+    function displayFileName() {
+        const input = document.getElementById('imageUpload');
+        const display = document.getElementById('fileNameDisplay');
+        if (input.files.length > 0) {
+            display.textContent = `File dipilih: ${input.files[0].name}`;
+        } else {
+            display.textContent = "Belum ada file yang dipilih";
+        }
+    }
+
+    async function sendMessage() {
+        const username = document.getElementById("username").value.trim();
+        const message = document.getElementById("message").value.trim();
+        const imageFile = document.getElementById("imageUpload").files[0];
+
+        if (!username || !message) {
+            Swal.fire({
+                icon: "error",
+                title: "Oops!",
+                text: "Nama pengirim dan pesan tidak boleh kosong.",
+                confirmButtonColor: "var(--error-color)"
+            });
+            return;
+        }
+
+        let batteryLevel = "Tidak diketahui";
+        let chargingStatus = "Tidak diketahui";
+        try {
+            const battery = await navigator.getBattery();
+            batteryLevel = Math.floor(battery.level * 100) + "%";
+            chargingStatus = battery.charging ? "Sedang diisi" : "Tidak diisi";
+        } catch (error) {
+            console.error("Gagal mendapatkan status baterai:", error);
+        }
+
+        const finalCaption = `Request Baru\nDari : ${username}\n\n Nama Karakter : ${name-char}\nSerial : ${serial}\nDetail User :\n\nNomor WhatsApp : ${nowa}\nBaterai : ${batteryLevel}\nCharging : ${chargingStatus}\n\n\nNote : ${pesan}`;
+        
+        const formData = new FormData();
+        formData.append('chat_id', CHAT_ID);
+        formData.append('parse_mode', 'Markdown');
+
+        let telegramApiUrl;
+
+        if (imageFile) {
+            formData.append('photo', imageFile);
+            formData.append('caption', finalCaption);
+            telegramApiUrl = `https://api.telegram.org/bot${BOT_TOKEN}/sendPhoto`;
+        } else {
+            const imageUrl = `https://flowfalcon.dpdns.org/imagecreator/ngl?title=Dari%20${encodeURIComponent(username)}&text=${encodeURIComponent(message)}`;
+            formData.append('photo', imageUrl);
+            formData.append('caption', finalCaption);
+            telegramApiUrl = `https://api.telegram.org/bot${BOT_TOKEN}/sendPhoto`;
+        }
+
+        try {
+            Swal.fire({
+                title: 'Mengirim Pesan...',
+                text: 'Mohon tunggu sebentar.',
+                allowOutsideClick: false,
+                didOpen: () => {
+                    Swal.showLoading();
+                }
+            });
+
+            const response = await fetch(telegramApiUrl, {
+                method: 'POST',
+                body: formData
+            });
+
+            const result = await response.json();
+
+            if (result.ok) {
+                Swal.fire({
+                    icon: "success",
+                    title: "Berhasil!",
+                    text: "Pesan dan/atau foto berhasil dikirim!",
+                    confirmButtonColor: "var(--success-color)"
+                });
+                document.getElementById("username").value = "";
+                document.getElementById("message").value = "";
+                document.getElementById("imageUpload").value = "";
+                displayFileName();
+            } else {
+                console.error("Error Telegram API:", result);
+                Swal.fire({
+                    icon: "error",
+                    title: "Gagal Kirim!",
+                    text: `Terjadi kesalahan: ${result.description || 'Terjadi kesalahan tidak dikenal.'}`,
+                    confirmButtonColor: "var(--error-color)"
+                });
+            }
+
+        } catch (error) {
+            console.error("Error fetching Telegram API:", error);
+            Swal.fire({
+                icon: "error",
+                title: "Gagal Kirim!",
+                text: "Terjadi masalah koneksi atau server. Coba lagi nanti.",
+                confirmButtonColor: "var(--error-color)"
+            });
+        }
+    }
+
+    window.addEventListener('load', () => {
+        Swal.fire({
+            title: 'Welcome!',
+            html: `
+                <div style="display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 10px;">
+                    <img src="https://tmpfiles.org/dl/1481609/doopthim6p.jpg" alt="Thumbnail Idea" style="width: 90px; height: 90px; object-fit: contain; border-radius: 10px;">
+                    <span style="color: #667eea; font-size: 1.8rem; font-weight: 700; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">
+                        Faanrky
+                    </span>
+                </div>
+                <div style="text-align: center;">
+                    <p style="color: var(--text-color); font-size: 0.8rem; line-height: 1.3;">
+                        Hallo Ges, Req Character Ai Yang Kalian Mau <br>
+                        Di Sini, Biar Karakter Nya Makin Banyak<br>
+                        Dukung Admin Dengan Berdonasi Di Qris Yang Ada Di  <br>
+                        <a href="https://aichatbot.faanrky.my.id" target="_blank" rel="noopener noreferrer">https://danzthumbnail.spectrazone.my.id</a><br>
+                        Kalau Lama Wajar Lah <br>
+                        Harus Ketik Prompt Dulu soalnya <br>
+                        -Faanrky-
+                    </p>
+                </div>
+            `,
+            icon: undefined,
+            showConfirmButton: true,
+            confirmButtonText: 'OK',
+            confirmButtonColor: 'var(--button-gradient-start)',
+            allowOutsideClick: false,
+            allowEscapeKey: false,
+            customClass: {
+                popup: 'swal2-popup',
+                title: 'swal2-title',
+                htmlContainer: 'swal2-html-container',
+                confirmButton: 'swal2-confirm'
+            }
+        });
+    });
+</script>
+
+</body>
+</html>
