@@ -107,12 +107,6 @@ name: "Anna Yamada" ,
 dir: "boku-no-kokkoro-no-yabai-yatsu",
 subname: "yamada", image: "image/yamada.jpg",
 desc: "Anna Yamada\nBoku no kokkoro no yabai yatsu",
-},
-{
-name: "base" ,
-dir: "base" ,
-subname: "base", image: "image/base.jpg",
-desc: "char\n- Anime -",
 }
 ],
 "Genshin Impact": [
