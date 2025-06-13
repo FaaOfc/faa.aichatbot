@@ -104,7 +104,7 @@ desc: "Shun Sunohara\n- Blue Archive -",
 "Boku no kokkoro no yabai yatsu": [
 {
 name: "Anna Yamada" ,
-dir: "boku-no-kokkoro-no-yabai-yatsu" ,
+dir: "boku-no-kokkoro-no-yabai-yatsu",
 subname: "yamada", image: "image/yamada.jpg",
 desc: "Anna Yamada\nBoku no kokkoro no yabai yatsu",
 },
@@ -114,9 +114,7 @@ dir: "base" ,
 subname: "base", image: "image/base.jpg",
 desc: "char\n- Anime -",
 }
-]
-  
-
+],
 "Genshin Impact": [
 {
 name: "Furina" ,
