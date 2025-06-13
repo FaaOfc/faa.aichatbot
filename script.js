@@ -1,5 +1,6 @@
 const categoryDescriptions = {
 "Blue Archive": "Karakter Dari Blue Archive",
+"Boku no kokkoro no yabai yatsu": "Karakter Dari Anime Boku No Kokkoro No Yabai Yatsu",
 "Gotoubun No Hanayome": "Karakter Dari Anime Gotoubun No Hanayome",
 "Genshin Impact": "Karakter Dari Game Genshin Impact",
 "base": "Place Holder",
@@ -99,6 +100,22 @@ subname: "shun", image: "image/shun.jpg",
 desc: "Shun Sunohara\n- Blue Archive -",
 }
 ],
+
+"Boku no kokkoro no yabai yatsu": [
+{
+name: "Anna Yamada" ,
+dir: "boku-no-kokkoro-no-yabai-yatsu" ,
+subname: "yamada", image: "image/yamada.jpg",
+desc: "Anna Yamada\nBoku no kokkoro no yabai yatsu",
+},
+{
+name: "base" ,
+dir: "base" ,
+subname: "base", image: "image/base.jpg",
+desc: "char\n- Anime -",
+}
+]
+  
 
 "Genshin Impact": [
 {
