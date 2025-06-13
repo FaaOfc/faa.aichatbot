@@ -39,39 +39,6 @@
         <strong> = W = </strong>
       </p>
     </div>
-
-  <!-- Tombol Login -->
-<button class="tbl" onclick="document.getElementById('loginModal').style.display='flex'">Login</button>
-
-<!-- Modal Login -->
-<div id="loginModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.7); justify-content:center; align-items:center; z-index:9999;">
-  <div style="background:#111; color:white; padding:30px; border-radius:20px; max-width:400px; width:90%; position:relative;">
-    <span onclick="document.getElementById('loginModal').style.display='none'" style="position:absolute; right:15px; top:10px; cursor:pointer; font-size:20px;">&times;</span>
-    <h2 style="text-align:center; margin-bottom:20px;">Login</h2>
-    <form onsubmit="return loginUser(event)">
-      <label for="username">Username</label>
-      <input type="text" id="username" required style="width:100%; padding:10px; border-radius:10px; margin-bottom:15px;">
-      <label for="password">Password</label>
-      <input type="password" id="password" required style="width:100%; padding:10px; border-radius:10px; margin-bottom:20px;">
-      <button type="submit" style="width:100%; padding:12px; background:#00c896; border:none; border-radius:10px; font-weight:bold;">Login</button>
-      <div id="loginError" style="margin-top:15px; text-align:center; color:#ff4d4d; display:none;">
-        <p>Anda perlu meminta akses ke owner</p>
-        <a href="https://api.whatsapp.com/send?phone=62895404774374&text=Halo,%20saya%20ingin%20meminta%20akses%20ke%20web%20tersebut" 
-           target="_blank"
-           style="display:inline-block; margin-top:10px; background:#25d366; color:white; padding:10px 20px; border-radius:10px; text-decoration:none;">
-          Minta Akses via WhatsApp
-        </a>
-      </div>
-    </form>
-  </div>
-</div>
-
-<!-- Konten khusus setelah login -->
-<div id="privateContent" style="display:none; text-align:center; margin-top:30px;">
-  <h2 style="color:white;">Konten Khusus Telah Terbuka</h2>
-  <p style="color:lightgray;">Selamat datang, Anda sudah login.</p>
-  <!-- Kamu bisa tambahkan konten khusus lainnya di sini -->
-</div>
         
     <div id="productContainer"></div>
   </div>
@@ -85,30 +52,5 @@
 
   <script src="script.js"></script>
 
-<script>
-  function loginUser(event) {
-    event.preventDefault();
-
-    const accounts = {
-      "admin": "123",
-      "faa": "Faanrky",
-      "zann": "user"
-    };
-
-    const username = document.getElementById("username").value.trim().toLowerCase();
-    const password = document.getElementById("password").value;
-    const errorBox = document.getElementById("loginError");
-    const modal = document.getElementById("loginModal");
-    const privateContent = document.getElementById("privateContent");
-
-    if (accounts[username] && accounts[username] === password) {
-      modal.style.display = "none";
-      errorBox.style.display = "none";
-      privateContent.style.display = "block";
-    } else {
-      errorBox.style.display = "block";
-    }
-  }
-</script>
 </body>
 </html>
